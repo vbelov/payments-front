@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bundle of bundles">
+      <td>{{bundle.name}}</td>
+      <td>{{bundle.price}}</td>
+      <td>{{bundle.itemsStr()}}</td>
+    </tr>
+  </tbody>
+</table>

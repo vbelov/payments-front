@@ -7,16 +7,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { PeriodsListComponent } from './periods-list/periods-list.component';
+import { BundlesListComponent } from './bundles-list/bundles-list.component';
 
 import { ProductsService } from './services/products.service';
 import { PeriodsService } from './services/periods.service';
+import { BundlesService } from './services/bundles.service';
 import { Datastore } from './services/datastore.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsListComponent,
-    PeriodsListComponent
+    PeriodsListComponent,
+    BundlesListComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { Datastore } from './services/datastore.service';
   providers: [
     ProductsService,
     PeriodsService,
+    BundlesService,
     Datastore
   ],
   bootstrap: [AppComponent]

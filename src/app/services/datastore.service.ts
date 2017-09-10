@@ -4,6 +4,7 @@ import { JsonApiDatastoreConfig, JsonApiDatastore } from 'angular2-jsonapi';
 
 import { Product } from '../models/product';
 import { Period } from '../models/period';
+import { Bundle } from '../models/bundle';
 
 @Injectable()
 @JsonApiDatastoreConfig({
@@ -11,6 +12,7 @@ import { Period } from '../models/period';
   models: {
     products: Product,
     'subscription-periods': Period,
+    bundles: Bundle,
   }
 })
 export class Datastore extends JsonApiDatastore {
