@@ -1,27 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { JsonApiQueryData } from 'angular2-jsonapi';
 
 import 'rxjs/add/operator/toPromise';
 
+import { Datastore } from './datastore.service';
 import { Period } from '../models/period';
-
-interface JsonApiObject {
-  attributes: Period;
-}
-
-interface JsonApiList {
-  data: JsonApiObject[];
-}
 
 @Injectable()
 export class PeriodsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private datastore: Datastore) { }
 
   getPeriods(): Promise<Period[]> {
-    return this.http.get<JsonApiList>('http://localhost:3000/api/v1/subscription-periods')
-      .toPromise()
-      .then(response => response.data.map(obj => obj.attributes));
-    // .catch(this.handleError);
+    return this.datastore.findAll(Period).toPromise().then(
+      (periods: JsonApiQueryData<Period>) => periods.getModels()
+    );
   }
 }

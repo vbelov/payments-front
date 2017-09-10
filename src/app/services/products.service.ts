@@ -1,27 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {JsonApiQueryData} from 'angular2-jsonapi';
 
 import 'rxjs/add/operator/toPromise';
 
+import { Datastore } from './datastore.service';
 import { Product } from '../models/product';
-
-interface JsonApiObject {
-  attributes: Product;
-}
-
-interface JsonApiList {
-  data: JsonApiObject[];
-}
 
 @Injectable()
 export class ProductsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private datastore: Datastore) { }
 
   getProducts(): Promise<Product[]> {
-    return this.http.get<JsonApiList>('http://localhost:3000/api/v1/products')
-      .toPromise()
-      .then(response => response.data.map(obj => obj.attributes));
-      // .catch(this.handleError);
+    return this.datastore.findAll(Product).toPromise().then(
+      (products: JsonApiQueryData<Product>) => products.getModels()
+    );
   }
 }

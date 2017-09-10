@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { JsonApiModule } from 'angular2-jsonapi';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,6 +10,7 @@ import { PeriodsListComponent } from './periods-list/periods-list.component';
 
 import { ProductsService } from './services/products.service';
 import { PeriodsService } from './services/periods.service';
+import { Datastore } from './services/datastore.service';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { PeriodsService } from './services/periods.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    JsonApiModule,
     AppRoutingModule
   ],
   providers: [
     ProductsService,
-    PeriodsService
+    PeriodsService,
+    Datastore
   ],
   bootstrap: [AppComponent]
 })

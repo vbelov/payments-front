@@ -3,12 +3,14 @@
     <tr>
       <th>Code</th>
       <th>Name</th>
+      <th>Subject</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.code}}</td>
       <td>{{product.name}}</td>
+      <td>{{product.subject_code}}</td>
     </tr>
   </tbody>
 </table>
