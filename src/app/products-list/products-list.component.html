@@ -1,5 +1,14 @@
-<ul>
-  <li *ngFor="let product of products">
-    name is {{product.name}}, code is {{product.code}}
-  </li>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.code}}</td>
+      <td>{{product.name}}</td>
+    </tr>
+  </tbody>
+</table>
